@@ -5,29 +5,46 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
 
+.contenedor {
+  width: 100%;
+  /*max-width: 1200px;*/
+  margin: auto;
+  display: grid;
+  grid-gap: 0px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, auto);
+
+  grid-template-areas:
+    "encabezado encabezado encabezado"
+    "contenido contenido lateral"
+    "pie      pie        pie ";
+}
+
 body {
-  position: relative;
   font-family: "Roboto", sans-serif;
 }
 
 header {
-  background-image: url(../assets/img/frente\ local.jpg);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-position-y: -750px;
-  width: 1280px;
+  /*background-position-y: -750px;*/
+  /*width: 1280px;*/
   height: 204px;
   overflow: hidden;
   padding: 0;
 }
 
-.encabezado {
+.contenedor .encabezado {
+  display: grid;
+  grid-area: encabezado;
+  justify-content: center;
+  align-content: space-between;
+  background-image: url(../assets/img/frente\ local.jpg);
+  background-size: auto;
+  background-repeat: repeat;
+  background-position: center;
+  background-position-y: -750px;
   height: 204px;
   margin: 0;
   background-color: rgba(255, 255, 255, 50%);
-  position: relative;
-  display: block;
   overflow: hidden;
 }
 
@@ -103,9 +120,10 @@ header {
   bottom: 50px;
 }
 
-.principal {
+.contenedor .contenido {
+  grid-area: contenido;
   background-color: #93559e;
-  width: 1280px;
+  /*width: 1280px;*/
   min-height: 500px;
   height: auto;
   overflow: hidden;
@@ -115,7 +133,7 @@ header {
 }
 
 .principal__seccion {
-  width: 600px;
+  width: 80%;
   position: relative;
   display: inline-block;
   overflow: hidden;
@@ -160,13 +178,15 @@ header {
   display: inline-block;
 }
 
-.principal__reel {
-  width: 580px;
+.contenedor .lateral {
+  grid-area: lateral;
+  width: 100%;
+  background-color: #93559e;
+  padding-top: 50px;
+  justify-content: center;
   height: auto;
-  position: relative;
-  display: inline-block;
-  top: -40px;
-  left: 100px;
+  display: grid;
+  min-height: 100px;
 }
 
 .principal__reel p {
@@ -183,34 +203,35 @@ header {
   border: solid 4px black;
   border-style: double;
   padding: 15px;
+}
 
-} 
-
-.pie {
+.contenedor .pie {
+  grid-area: pie;
   background-color: #00776b;
-  width: 1280px;
+  /*width: 1280px;*/
   height: 50px;
-  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-content: space-between;
   position: relative;
   top: -5px;
 }
 
 .pie__links {
-  display: inline-block;
+  display: flex;
   margin: 10px;
   padding: 0px 5px 0 5px;
   border-left: solid black 2px;
   border-right: solid black 2px;
 }
 .pie__mr {
-  display: inline;
-  margin: 30px 300px 10px 20px;
+  margin: 10px;
+  display: flex;
 }
 
 .pie__mail {
-  position: relative;
-  left: 280px;
-  display: inline;
+  margin: 10px;
+  display: flex;
 }
 
 a {
@@ -230,4 +251,34 @@ a:hover {
   display: block;
   text-decoration: none;
   color: white;
+}
+
+@media screen and (max-width: 768px) {
+  .contenedor {
+    margin: 10px auto;
+    display: grid;
+    grid-gap: 0;
+    grid-template-columns: 1fr 1fr;
+
+    grid-template-areas:
+      "encabezado encabezado"
+      "contenido contenido "
+      "lateral lateral"
+      "pie      pie";
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .contenedor {
+    margin: 10px auto;
+    display: grid;
+    grid-gap: 0;
+    grid-template-columns: 1fr;
+
+    grid-template-areas:
+      "encabezado"
+      "contenido "
+      "lateral"
+      "pie";
+  }
 }
